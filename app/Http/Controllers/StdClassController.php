@@ -55,9 +55,11 @@ class StdClassController extends Controller
      * @param  \App\Models\stdClass  $stdClass
      * @return \Illuminate\Http\Response
      */
-    public function show(stdClass $stdClass)
+    public function show($id)
     {
         //
+        $show = DB::table('std_classes')->where('id', $id)->first();
+        return response()->json($show);
     }
 
     /**
