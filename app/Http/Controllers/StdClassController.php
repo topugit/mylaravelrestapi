@@ -89,8 +89,10 @@ class StdClassController extends Controller
      * @param  \App\Models\stdClass  $stdClass
      * @return \Illuminate\Http\Response
      */
-    public function destroy(stdClass $stdClass)
+    public function destroy($id)
     {
         //
+        DB::table('std_classes')->where('id', $id)->delete();
+        return response('deleted');
     }
 }
