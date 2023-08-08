@@ -39,6 +39,14 @@ class StdClassController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'class_name' => 'required|unique:std_classes|max:25'
+        ]);
+          $data = array();
+          $data['class_name'] = $request->class_name;
+          DB::table('std_classes')->insert($data);
+          return response('done');
+        //return redirect('/posts');
     }
 
     /**
